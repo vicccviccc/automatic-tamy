@@ -209,8 +209,25 @@ function Brand() {
 }
 export default function App() {
   const [menu, setMenu] = useState(false)
-  // guarda os IDs dos imoveis marcados como favoritos nesta visita
-  const [favorites, setFavorites] = useState<number[]>([])
+  // guarda apenas os IDs dos imoveis favoritos no navegador
+  const [favorites, setFavorites] = useState<number[]>(() => {
+    try {
+      const stored: unknown = JSON.parse(localStorage.getItem("tamily-favorites") || "[]")
+      return Array.isArray(stored)
+        ? [...new Set(stored.filter((id): id is number =>
+            typeof id === "number" && properties.some(p => p.id === id)))]
+        : []
+    } catch {
+      return []
+    }
+  })
+  useEffect(() => {
+    try {
+      localStorage.setItem("tamily-favorites", JSON.stringify(favorites))
+    } catch {
+      // o site continua funcionando sem armazenamento
+    }
+  }, [favorites])
   const [filter, setFilter] = useState({
     location: "",
     type: "",
