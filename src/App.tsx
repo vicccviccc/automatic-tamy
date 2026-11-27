@@ -318,6 +318,7 @@ export default function App() {
             onSubmit={(e) => {
               e.preventDefault()
               setApplied(filter)
+              setTab("Todos")
               goProperties()
             }}
           >
