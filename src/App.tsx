@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode, type CSSProperties } from "react"
+import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react"
 
 function Icon({ name, size = 20 }: { name: string; size?: number }) {
   const paths: Record<string, ReactNode> = {
@@ -221,6 +221,15 @@ export default function App() {
   const [modal, setModal] =
     useState<"contact" | "instagram" | typeof properties[number] | null>(null)
   const [onlyFavorites, setOnlyFavorites] = useState(false)
+  // fecha a janela de detalhes com a tecla Esc
+  useEffect(() => {
+    if (!modal) return
+    const fechar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setModal(null)
+    }
+    window.addEventListener("keydown", fechar)
+    return () => window.removeEventListener("keydown", fechar)
+  }, [modal])
   const goProperties = () =>
     document.getElementById("imoveis")?.scrollIntoView({ behavior: "smooth" })
   // filtra a lista por cidade, tipo, valor, quartos e favoritos
