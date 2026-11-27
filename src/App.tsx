@@ -401,7 +401,7 @@ export default function App() {
                 imóveis disponíveis
                 <br />nesta prévia<span className="pink-period">.</span>
               </h2>
-              <p>Veja os imóveis demonstrativos disponíveis nesta prévia.</p>
+              <p aria-live="polite">{visible.length === 1 ? "1 imóvel encontrado nesta prévia." : `${visible.length} imóveis encontrados nesta prévia.`}</p>
             </div>
             <button
               className={`favorites-link ${onlyFavorites ? "active" : ""}`}
