@@ -106,6 +106,7 @@ function ParticleButton({
   const last = useRef(0)
   return (
     <button
+      type="button"
       className={`button ${secondary ? "secondary" : ""} ${className}`}
       onClick={onClick}
       onPointerMove={(e) => {
