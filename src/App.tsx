@@ -192,6 +192,9 @@ const properties = [
       "Kitnet demonstrativa com 1 quarto, 1 banheiro e 48 m². Informações e valor são ilustrativos nesta prévia.",
   },
 ]
+const normalizarBusca = (value: string) =>
+  value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+
 const money = (value: number) => value.toLocaleString("pt-BR")
 function Brand() {
   return (
@@ -224,7 +227,7 @@ export default function App() {
   const visible = properties.filter(
     (p) =>
       (!applied.location ||
-        p.location.toLowerCase().includes(applied.location.toLowerCase())) &&
+        normalizarBusca(p.location).includes(normalizarBusca(applied.location))) &&
       (!applied.type || p.type === applied.type) &&
       (!applied.price || p.price <= Number(applied.price)) &&
       (!applied.rooms || p.beds >= Number(applied.rooms)) &&
