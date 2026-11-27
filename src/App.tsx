@@ -212,6 +212,7 @@ export default function App() {
     price: "",
     rooms: "",
   })
+  // o filtro so entra em vigor depois de clicar em buscar
   const [applied, setApplied] = useState(filter)
   const [tab, setTab] = useState("Todos")
   const [modal, setModal] =
@@ -219,6 +220,7 @@ export default function App() {
   const [onlyFavorites, setOnlyFavorites] = useState(false)
   const goProperties = () =>
     document.getElementById("imoveis")?.scrollIntoView({ behavior: "smooth" })
+  // filtra a lista por cidade, tipo, valor, quartos e favoritos
   const visible = properties.filter(
     (p) =>
       (!applied.location ||
