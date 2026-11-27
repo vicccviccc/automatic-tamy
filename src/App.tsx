@@ -394,6 +394,7 @@ export default function App() {
             </div>
             <button
               className={`favorites-link ${onlyFavorites ? "active" : ""}`}
+              aria-pressed={onlyFavorites}
               onClick={() => setOnlyFavorites(!onlyFavorites)}
             >
               <Icon name="heart" size={18} />{" "}
@@ -408,6 +409,7 @@ export default function App() {
             {["Todos", "Apartamento", "Casa", "Kitnet"].map((t) => (
               <button
                 className={tab === t ? "selected" : ""}
+                aria-pressed={tab === t}
                 key={t}
                 onClick={() => setTab(t)}
               >
