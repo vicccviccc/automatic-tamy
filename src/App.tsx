@@ -436,8 +436,8 @@ export default function App() {
                       favorites.includes(p.id) ? "saved" : ""
                     }`}
                     aria-label={`${
-                      favorites.includes(p.id) ? "Remover" : "Adicionar"
-                    } ${p.name} dos favoritos`}
+                      favorites.includes(p.id) ? `Remover ${p.name} dos favoritos` : `Adicionar ${p.name} aos favoritos`
+                    }`}
                     aria-pressed={favorites.includes(p.id)}
                     onClick={() =>
                       setFavorites((f) =>
