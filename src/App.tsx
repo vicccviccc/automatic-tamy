@@ -239,7 +239,7 @@ export default function App() {
       <header>
         <div className="container header-inner">
           <Brand />
-          <nav className={menu ? "open" : ""}>
+          <nav id="menu-principal" className={menu ? "open" : ""}>
             {[
               ["Início", "inicio"],
               ["Imóveis", "imoveis"],
@@ -259,8 +259,9 @@ export default function App() {
           </ParticleButton>
           <button
             className="menu-button"
-            aria-label="Abrir menu"
+            aria-label={menu ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menu}
+            aria-controls="menu-principal"
             onClick={() => setMenu(!menu)}
           >
             <Icon name={menu ? "close" : "menu"} />
