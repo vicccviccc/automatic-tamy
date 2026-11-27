@@ -86,6 +86,7 @@ function Icon({ name, size = 20 }: { name: string; size?: number }) {
   )
 }
 
+// botao com particulas que aparecem quando passa o mouse
 function ParticleButton({
   children,
   onClick,
@@ -114,6 +115,7 @@ function ParticleButton({
           Date.now() - last.current < 90
         )
           return
+        // intervalo para nao criar particulas demais
         last.current = Date.now()
         const rect = e.currentTarget.getBoundingClientRect()
         setParticles((p) => [
