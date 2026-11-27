@@ -144,6 +144,7 @@ function ParticleButton({
     </button>
   )
 }
+// dados de exemplo enquanto nao tenho a lista real dos imoveis
 const properties = [
   {
     id: 1,
