@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react"
 
+// icones em SVG pra nao depender de uma biblioteca externa
 function Icon({ name, size = 20 }: { name: string; size?: number }) {
   const paths: Record<string, ReactNode> = {
     arrow: (
@@ -208,6 +209,7 @@ function Brand() {
 }
 export default function App() {
   const [menu, setMenu] = useState(false)
+  // guarda os IDs dos imoveis marcados como favoritos nesta visita
   const [favorites, setFavorites] = useState<number[]>([])
   const [filter, setFilter] = useState({
     location: "",
